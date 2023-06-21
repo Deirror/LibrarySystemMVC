@@ -8,8 +8,10 @@ namespace dddh // Note: actual namespace depends on the project name.
         static void Main(string[] args)
         {
             Console.WriteLine("Write the parameters of the two sides!");
-            decimal a = decimal.Parse(Console.ReadLine());
-            decimal b = decimal.Parse(Console.ReadLine());
+            string text = Console.ReadLine();
+            decimal a = decimal.Parse(text);
+            text= Console.ReadLine();
+            decimal b = decimal.Parse(text);
             Console.WriteLine(GetRectangleArea(a,b)); 
 
         }
