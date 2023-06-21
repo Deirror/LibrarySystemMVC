@@ -12,6 +12,7 @@ namespace dddh // Note: actual namespace depends on the project name.
             decimal a = decimal.Parse(text);
             text= Console.ReadLine();
             decimal b = decimal.Parse(text);
+            //wi
             Console.WriteLine(GetRectangleArea(a,b)); 
 
         }
