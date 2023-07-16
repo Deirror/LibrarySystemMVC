@@ -1,0 +1,80 @@
+﻿@model LibrarysSystem.Models.Domain.Title
+@using LibrarysSystem.Models.ViewModels
+
+<div class="container mt-5">
+    <div style="background-color:white;width:1000px;margin-left:60px; margin-bottom:40px; height:600px">
+
+        <h1 class="text-center" style="font-style:italic">Create a title</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div style="float:left; width:50%">
+
+                <div class="mb-3" style=" margin-left:50px">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" asp-for="Name"  style="width:400px" />
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+
+                <div class="mb-3" style="margin-left:50px">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description" asp-for="Description" style="width:400px" />
+                </div>
+                <div class="mb-3" style="margin-left:50px">
+                    <label class="form-label">Author</label>
+                    <input type="text" class="form-control" id="author" asp-for="Author"  style="width:400px" />
+                </div>
+                <div class="mb-3" style=" margin-left:50px">
+                    <label class="form-label">Year</label>
+                    <input type="text" class="form-control" id="year" asp-for="Year"  style="width:400px" />
+
+                </div>
+                <div class="mb-3" style=" margin-left:50px">
+                    <label class="form-label">ISBN</label>
+                    <input type="text" class="form-control" id="isbn" asp-for="ISBN"  style="width:400px" />
+
+                </div>
+
+                <div class="mb-3" style="margin-left:50px">
+                    <label class="form-label">Type</label>
+                    <input type="text" class="form-control" id="type" asp-for="Type"  style="width:400px" />
+
+                </div>
+
+            </div>
+
+            <div style="float:right; width:50%">
+
+
+                <div class="mb-3" style="margin-left:50px">
+                    <label class="form-label">ImageFile</label>
+                    <input type="file" class="form-control" id="imagefile" asp-for="ImageUrl"  accept="image/*" style="width:250px; " />
+
+
+                </div>
+                <div class="mb-3" style="margin-left:50px">
+                    <label class="form-label">Publisher</label>
+                    <input type="text" class="form-control" id="publisher" asp-for="Publisher" style="width:400px" />
+
+                </div>
+                <div class="mb-3" style="margin-left:50px">
+                    <label class="form-label">PublishedYear</label>
+                    <input type="text" class="form-control" id="publishedyear" asp-for="PublishedYear" style="width:400px" />
+
+                </div>
+                <div class="mb-3" style="margin-left:50px">
+                    <label class="form-label">Section's Name</label>
+                    <input type="text" class="form-control" id="sectionname" asp-for="Section.Name" style="width:400px" />
+
+                </div>
+
+                <div class="mb-3" style="margin-left:50px; margin-top:20px">
+                    <button type="submit" class="btn btn-dark text-center" style="float:left">Add title</button>
+                    <p style="margin-left:270px">
+                        or <a asp-area="" asp-controller="Title" asp-action="Details">Back to Details</a>
+                    </p>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</div>

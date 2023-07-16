@@ -1,0 +1,95 @@
+﻿@model MovementLibraryUnit
+
+<div class=" mt-2 container"
+     style="background-color:white;width:450px; padding-bottom:100px">
+
+       <form method="post">
+             
+                <h1 class="text-center" style="font-style:italic">Request's Review</h1>
+
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <input type="text" class="form-control" asp-for="Title.Name" disabled/>
+                </div>
+
+                <div class="mb-3 form-group">
+                    <label class="form-label">Date of request</label>
+                    <input type="text" class="form-control" asp-for="Date" disabled />
+                </div>
+
+                 @{
+            if(Model.Status=="Waiting")
+            {
+
+        <div class="mb-3 form-group">
+            <label class="form-label">Time Limit</label>
+                <input class="form-control" type="datetime-local" name="datetime" />
+            </div>
+        }
+        else if (Model.Status == "Taken" && Model.Type == "Get")
+        {
+            <div class="mb-3 form-group">
+                <label class="form-label">Time Limit</label>
+                <input name="datetime" class="form-control" asp-for="TimeLimit" disabled />
+            </div>
+        }
+      }
+
+        <div class="mb-3 form-group">
+            <label class="form-label">Reader's Nickname</label>
+            <input type="text" class="form-control" asp-for="Reader.Nickname" disabled />
+            
+        </div>
+        @{
+        if (Model.Status == "Taken" && Model.Type == "Get")
+            {
+
+                <div class="mb-3">
+                <a class="btn btn-secondary" asp-controller="ManageRequests" asp-action="ChangeToReturn" asp-route-id="@Model.Id" style="float:left" > Update</a>
+                </div>
+
+            }
+            else if(Model.Status=="Waiting")
+            {
+          
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-secondary text-center" asp-route-id="@Model.Id" style="float:left">Update</button>
+                </div>
+      
+        }
+        else if(Model.Type=="Return")
+        {
+            <div class="mb-3">
+                <a class="btn btn-secondary" asp-controller="ManageRequests" asp-action="CompleteRequest" asp-route-id="@Model.Id" style="float:left"> Complete</a>
+            </div>
+        }
+            
+        }
+
+    @if(Model.Type=="Get")
+    {
+
+        <div class="text-center">
+            <a class="btn btn-danger" asp-controller="ManageRequests" asp-action="Cancel" asp-route-id="@Model.Id" style="margin-left:-70px" > Cancel Request</a>
+        </div>
+
+
+        <div class="text-center">
+            <a asp-controller="ManageRequests" asp-action="IndexForLibrarians" class="btn btn-link" style="float:right; margin-top:-40px"> Back to List</a>
+        </div>
+    }
+    else if (Model.Type == "Return")
+    {
+        <div class="text-center">
+            <a asp-controller="ManageRequests" asp-action="IndexForLibrarians" class="btn btn-link" style="float:right;"> Back to List</a>
+        </div>
+    }
+
+
+
+    </form>
+
+    @section Scripts{
+        <partial name="_ValidationScriptsPartial" />
+    }
+</div>

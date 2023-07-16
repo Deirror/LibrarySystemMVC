@@ -1,0 +1,221 @@
+﻿@model LibrarySystem.Models.Domain.Title
+
+<div class="container mt-2">
+    <div style="background-color:white;width:1000px;margin-left:60px;  height:600px">
+
+        @{
+            if(ViewBag.Action=="Create")
+            {
+                <h1 class="text-center" style="font-style:italic; margin-right:70px">Create Title</h1>
+
+
+                <form method="post" enctype="multipart/form-data">
+
+
+            <div class="container">
+                    <div style="float:left; width:50%">
+
+                        <div class="mb-3" style=" margin-left:50px">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" asp-for="Name" style="width:300px" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3" style="margin-left:50px">
+                            <label class="form-label">Description</label>
+                                <textarea class="form-control" asp-for="Description" style="width:300px"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        <div class="mb-3" style="margin-left:50px">
+                            <label class="form-label">Author</label>
+                            <input type="text" class="form-control" id="author" asp-for="Author" style="width:300px" />
+                            <span asp-validation-for="Author" class="text-danger"></span>
+                            </div>
+                        <div class="mb-3" style=" margin-left:50px">
+                            <label class="form-label">Year</label>
+                            <input type="text" class="form-control" id="year" asp-for="Year" style="width:300px" />
+                            <span asp-validation-for="Year" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3" style=" margin-left:50px">
+                            <label class="form-label">ISBN</label>
+                            <input type="text" class="form-control" id="isbn" asp-for="ISBN" style="width:300px" />
+                            <span asp-validation-for="ISBN" class="text-danger"></span>
+                        </div>
+
+                       
+
+                    </div>
+
+                   <div style="float:left; width:50%">
+                        <div class="mb-3" style="margin-left:50px; width:200px">
+                            <label class="ms-2">Type</label>
+                            <select asp-for="Type" asp-items="@ViewBag.TypeList" class="form-control">
+                                <option disabled selected class="text-center">--Select Type--</option>
+                            </select>
+
+                        </div>
+
+                        
+
+                    <div class="mb-3" style="margin-left:50px">
+                    <label class="form-label">Image File</label>
+                    <input type="file" class="form-control" name="file" accept="image/*" style="width:250px; " />
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+
+                    </div>
+                   <div class="mb-3" style="margin-left:50px">
+                     <label class="form-label">Publisher</label>
+                    <input type="text" class="form-control" id="publisher" asp-for="Publisher" style="width:300px" />
+                            <span asp-validation-for="Publisher" class="text-danger"></span>
+                    </div>
+                     <div class="mb-3" style="margin-left:50px">
+                    <label class="form-label">PublishedYear</label>
+                    <input type="text" class="form-control" id="publishedyear" asp-for="PublishedYear" style="width:300px" />
+                            <span asp-validation-for="PublishedYear" class="text-danger"></span>
+                     </div>
+                    
+ 
+            <div class="mb-3" style="margin-left:50px;width:200px">
+                <label class="ms-2">Section Name</label>
+                <select name="sectionName" asp-items="@ViewBag.SectionNameList" class="form-control">
+                    <option disabled selected class="text-center">--Select Section--</option>
+                </select>
+                                <span asp-validation-for="Section" class="text-danger"></span>
+            </div>
+
+
+                            <div class="mb-3" style="margin-left:50px; margin-top:20px">
+                                <button type="submit" class="btn btn-dark text-center" style="float:left">Add title</button>
+                                <p style="margin-left:270px">
+                                    or <a asp-area="" asp-controller="ManageTitles" asp-action="Index">Back to Details</a>
+                                </p>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+
+
+                </form>
+            
+
+
+            }
+            else if(ViewBag.Action=="Edit")
+            {
+                <h1 class="text-center" style="font-style:italic; margin-right:250px">Update Title</h1>
+
+
+
+
+
+
+                <form method="post" enctype="multipart/form-data">
+
+
+                    <div class="container" style="margin-right:100px">
+                        <div style="float:left; width:40%">
+
+                            <div class="mb-3" style=" margin-left:50px">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" asp-for="Name" style="width:300px" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3" style="margin-left:50px">
+                                <label class="form-label">Description</label>
+                                <input type="text" class="form-control" id="description" asp-for="Description" style="width:300px" />
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3" style="margin-left:50px">
+                                <label class="form-label">Author</label>
+                                <input type="text" class="form-control" id="author" asp-for="Author" style="width:300px" />
+                                <span asp-validation-for="Author" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3" style=" margin-left:50px">
+                                <label class="form-label">Year</label>
+                                <input type="text" class="form-control" id="year" asp-for="Year" style="width:300px" />
+                                <span asp-validation-for="Year" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3" style=" margin-left:50px">
+                                <label class="form-label">ISBN</label>
+                                <input type="text" class="form-control" id="isbn" asp-for="ISBN" style="width:300px" />
+                                <span asp-validation-for="ISBN" class="text-danger"></span>
+                            </div>
+
+
+
+                        </div>
+
+                        <div style="float:left; width:40%">
+                            <div class="mb-3" style="margin-left:50px; width:200px">
+                                <label class="ms-2">Type</label>
+                                <select asp-for="Type" asp-items="@ViewBag.TypeList" class="form-control">
+                                    <option disabled selected class="text-center">--Select Type--</option>
+                                </select>
+
+                            </div>
+
+
+
+                            <div class="mb-3" style="margin-left:50px">
+                                <label class="form-label">Image File</label>
+                                <input type="file" class="form-control" name="file" accept="image/*" style="width:250px; " />
+                                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+
+                            </div>
+                            <div class="mb-3" style="margin-left:50px">
+                                <label class="form-label">Publisher</label>
+                                <input type="text" class="form-control" id="publisher" asp-for="Publisher" style="width:300px" />
+                                <span asp-validation-for="Publisher" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3" style="margin-left:50px">
+                                <label class="form-label">PublishedYear</label>
+                                <input type="text" class="form-control" id="publishedyear" asp-for="PublishedYear" style="width:300px" />
+                                <span asp-validation-for="PublishedYear" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="mb-3" style="margin-left:50px;width:200px">
+                                <label class="ms-2">Section Name</label>
+                                <select name="sectionName" asp-items="@ViewBag.SectionNameList" class="form-control">
+                                    <option disabled selected class="text-center">--Select Section--</option>
+                                </select>
+                            </div>
+
+                            <input asp-for="Id" hidden />
+                            <input asp-for="Section" hidden />
+                            <input asp-for="ImageUrl" hidden />
+
+                            <div class="mb-3" style="margin-left:50px; margin-top:20px">
+                                <button type="submit" class="btn btn-dark text-center" style="float:left">Update</button>
+                                <p style="margin-left:200px">
+                                    or <a asp-area="" asp-controller="ManageTitles" asp-action="Index">Back to Details</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                   
+
+                    <div class="col-2" style="float:right;">
+                        <img src="@Model.ImageUrl" style="border-radius:5px; border:1px solid #bbb9b9;  width:250px; height:350px;" />
+                    </div>
+
+                </form>
+
+
+            }
+
+            @section Scripts{
+                <partial name="_ValidationScriptsPartial" />
+            }
+    
+        }
+    </div>
+
+</div>

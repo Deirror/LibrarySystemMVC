@@ -1,0 +1,106 @@
+﻿@model List<Title>
+@using LibrarySystem.Utility;
+
+<form method="post" >
+    <div class="d-flex mt-4" style="width:500px; margin-left:300px">
+      <input class="form-control me-sm-2" type="search" placeholder="Search" name="searchString">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </div>
+    <br />
+
+    <div style="display: flex;flex-direction: row; justify-content:center; margin-bottom:40px">
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="bytitle" checked="checked">
+            <label class="form-check-label" for="optionsRadios1">
+                Search By Title
+            </label>
+        </div>
+        <div class="form-check" style="margin-left:20px">
+            <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="byauthor">
+            <label class="form-check-label" for="optionsRadios2">
+                Search By Author
+            </label>
+        </div>
+
+     
+                
+    </div>
+</form>
+    @using (Html.BeginForm("NavOptions", "ViewLibraryUnits", FormMethod.Post))
+    {
+      
+    
+
+
+
+        <div  style="display: flex;flex-direction: row; justify-content:center; margin-left:330px" >
+
+        <select name="section" asp-items="@ViewBag.SectionList" class="form-control" style="width:160px; height:40px; float:left">
+            <option disabled selected class="text-center">--Select a Section--</option>
+        </select>
+
+        <select name="type" asp-items="@ViewBag.TypeList" class="form-control" style="width:160px;margin-left:20px; height:40px;float:left">
+                <option disabled selected class="text-center">--Select a Type--</option>
+            </select>   
+
+            <div class="d-flex" style="width:500px; margin-left:50px ">               
+                <button class="btn btn-outline-secondary my-2 my-sm-0"  type="submit">Show</button>
+            </div>
+       </div>
+
+    }
+
+    <br />
+    <br />
+  @foreach(var el in Model)
+  {
+        <hr />
+    <div style="display: flex;flex-direction: row; margin-left:220px">
+
+
+        <div class="card border-primary mb-3" style="width:670px; background-color:aliceblue">
+                       
+            <div class="card-body">
+         
+                <h3 class="card-title" >@el.Name</h3>
+                    @if (!string.IsNullOrEmpty(AccountManagment.Role) && AccountManagment.IsConfirmed == "Yes")
+                    {
+                        <a class="btn btn-info" asp-action="MakeRequest" asp-controller="ViewLibraryUnits" asp-route-id="@el.Id" style="float:right; margin-top:-50px">Make a request</a>
+                    }
+                    <hr/>
+              <div style="width:500px">
+
+               <img src="@el.ImageUrl" style="width:250px; height:350px; border:2px solid gray; border-radius:5px; float:left"/>
+                    
+                        <div style="width:500px; text-align:center; margin-left:160px">
+                            <p style="font-size:19px"><strong>Author:</strong> @el.Author</p>
+                       </div>
+
+                        <div style="width:500px;  text-align:center; margin-left:160px">
+                            <p style="font-size:19px"><strong>Year:</strong> @el.Year</p>
+                        </div>
+
+                        <div style="width:500px; height:70px; text-align:center; margin-left:160px">
+                            <p style="font-size:19px"><strong>Type:</strong> @el.Type</p>
+                        </div>
+
+
+              <div style="width:400px; text-align:center; margin-left:250px">
+                  <p style="font-size:18px">@el.Description</p>
+
+              </div>
+       
+              </div>
+            </div>
+        </div>
+
+    </div>
+  }
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+            }
+
+        

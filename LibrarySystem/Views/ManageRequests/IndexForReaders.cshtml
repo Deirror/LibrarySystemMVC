@@ -1,0 +1,112 @@
+﻿@model List<MovementLibraryUnit>
+
+@{
+
+    if (Model.Where(x => x.Status == "Waiting").Any())
+    {
+
+        <div class="card border-warning mb-3" style="width:500px; height:500px; float:left;overflow-y: scroll;">
+            <div class="card-header" style="text-align:center">Pending Requests</div>
+        <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Date of request</th>
+                            <th scope="col">Type</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <form method="post">
+                    @foreach (var el in Model.Where(x => x.Status == "Waiting"))
+                    {
+                   
+                            <tr class="table-warning">
+                                <td>@el.Title.Name</td>
+                                <td>@el.Date</td>
+                                <td>@el.Type</td>
+                                <td>
+                                    <button type="submit" class="btn btn-danger" asp-route-id="@el.Id" style="width:100px; font-size:14px; height:40px">Cancel Order</button>
+                                </td>
+                            </tr>
+                        
+                    }
+                        </form>
+                    </tbody>
+                </table>
+               
+        </div>
+      </div>
+    }
+    else
+    {
+        <div class="card border-warning mb-3" style="width:500px; height:500px; float:left;overflow-y: scroll;">
+            <div class="card-header" style="text-align:center">Pending Requests</div>
+            <div class="card-body">
+               <div class="alert alert-dismissible alert-warning">
+                
+                <h4 class="alert-heading">Opss! It looks like you don't have any</h4>
+            </div>
+            </div>
+        </div>
+    }
+
+
+    if (Model.Where(x => x.Status == "Taken").Any())
+    {
+
+
+        <div class="card border-success mb-3" style="width:500px; height:500px; float:right;overflow-y: scroll;">
+            <div class="card-header" style="text-align:center">Confirmed Requests</div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Date of request</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Librarian Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form method="post">
+                            @foreach (var el in Model.Where(x => x.Status == "Taken"))
+                            {
+
+                            <tr class="table-success">
+                                <td>@el.Title.Name</td>
+                                <td>@el.Date</td>
+                                <td>@el.Type</td>
+                                <td>@el.Librarian.Name</td>
+                            </tr>
+
+                            }
+                        </form>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    }
+    else
+    {
+
+        <div class="card border-success mb-3" style="width:500px; height:500px; float:right;overflow-y: scroll;">
+            <div class="card-header" style="text-align:center">Confirmed Requests</div>
+            <div class="card-body">
+                <div class="alert alert-dismissible alert-warning">
+
+                    <h4 class="alert-heading">Opss! It looks like you don't have any</h4>
+                </div>
+            </div>
+        </div>
+    }
+
+    
+
+
+}
+
+
+

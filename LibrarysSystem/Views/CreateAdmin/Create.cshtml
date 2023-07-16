@@ -1,0 +1,37 @@
+﻿@model LibrarysSystem.Models.ViewModels.RegisterRequest
+@{
+}
+
+<div class="position-relative container mt-5">
+    <div class="position-absolute top-50 start-50 translate-middle"
+         style="background-color:white;width:450px; margin-top:218px">
+
+        <h1 class="text-center" style="font-style:italic">Create an Admin Account</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Nickname</label>
+                <input type="text" class="form-control" id="nickname" asp-for="Nickname" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="text" class="form-control" id="password" asp-for="Password" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" asp-for="Email" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" asp-for="Name" />
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-dark text-center">Create</button>
+            </div>
+        </form>
+    </div>
+
+</div>

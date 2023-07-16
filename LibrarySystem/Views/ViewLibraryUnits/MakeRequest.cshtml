@@ -1,0 +1,115 @@
+﻿@model LibraryUnit
+
+
+
+
+<div class="alert alert-dismissible alert-warning" style="height:500px; width:900px;margin-left:120px">
+
+  <div style ="display: flex;flex-direction: column;">
+
+        <div style="width:280px; border-right: 4px solid black; height: 460px;">
+                                                          
+        <img src="@Model.Title.ImageUrl" class="mt-5" style="width:250px; height:350px; border:2px solid gray; border-radius:5px; float:left" />
+    </div>
+    
+  <div style="margin-top:-400px; float:left">
+    <div style=" text-align:center; ">
+        <p style="font-size:17px"><strong>Name:</strong> @Model.Title.Name</p>
+    </div>
+
+        <div style="  text-align:center ">
+        <p style="font-size:19px"><strong>Author:</strong> @Model.Title.Author</p>
+    </div>
+
+            <div style="  text-align:center ">
+                <p style="font-size:19px"><strong>Year:</strong> @Model.Title.Year</p>
+            </div>
+
+
+            <div style="  text-align:center ">
+                <p style="font-size:19px"><strong>ISBN:</strong> @Model.Title.ISBN</p>
+            </div>
+
+        <div style="  text-align:center ">
+        <p style="font-size:19px"><strong>Condition:</strong> @Model.CurrentCondition</p>
+    </div>
+
+        <div style=" text-align:center">
+        <p style="font-size:19px"><strong>Medium:</strong> @Model.Medium</p>
+    </div>
+
+        <div style=" text-align:center ">
+        <p style="font-size:19px"><strong>Place:</strong> @Model.Place</p>
+    </div>
+
+            @if (Model.Title.Publisher != null && Model.Title.PublishedYear != null)
+            {
+                <div style=" text-align:center">
+                    <p style="font-size:15px"><i><strong>Publisher:</strong></i> @Model.Title.Publisher</p>
+                </div>
+
+                <div style=" text-align:center ">
+                    <p style="font-size:15px"><i><strong>Published Year:</strong></i> @Model.Title.PublishedYear</p>
+                </div>
+            }
+
+  </div>
+     <form method="post">
+
+        @if (Model.Title.Publisher != null && Model.Title.PublishedYear != null)
+        {
+
+                <div style="border-left: 4px solid black; height: 460px; margin-left:560px;margin-top:-465px;">
+
+
+
+                    <label class="form-label" style="display:flex; justify-content:center; padding-top:100px">Status of the Library Unit</label>
+                    <input type="text" class="form-control" disabled placeholder="@ViewBag.LuStatus" style="display:flex; justify-content:center; width:120px; margin-left:83px; margin-bottom:20px; text-align:center" />
+
+                    @if (ViewBag.LuStatus == "Available")
+                    {
+                        <div class="d-flex" style="display:flex; justify-content:center">
+                            <button asp-route-titleid="@Model.Title.Id"  class="btn btn-info my-2 my-sm-0" type="submit" style="width:200px; font-size:20px">Submit your request</button>
+                        </div>
+                    }
+                    else if (ViewBag.LuStatus == "Already Taken!")
+                    {
+                        <div class="d-flex" style="display:flex; justify-content:center">
+                            <button class="btn btn-info my-2 my-sm-0" disabled type="submit" style="width:200px; font-size:20px">Submit your request</button>
+                        </div>
+                        <p class="text-danger">Somebody has already taken this library unit!</p>
+                    }
+
+                </div>
+        }
+        else
+        {
+                <div style="border-left: 4px solid black; height: 460px; margin-left:560px;margin-top:-370px;">
+
+
+
+                    <label class="form-label" style="display:flex; justify-content:center; padding-top:100px">Status of the Library Unit</label>
+                  
+                    <input type="text" class="form-control" disabled placeholder="@ViewBag.LuStatus" style="display:flex; justify-content:center; width:100px; margin-left:83px; margin-bottom:20px" />
+               
+                    @if (ViewBag.LuStatus == "Waiting" || ViewBag.LuStatus == "Available")
+                    {
+                        <div class="d-flex" style="display:flex; justify-content:center">
+                            <button asp-route-titleid="@Model.Title.Id" class="btn btn-info my-2 my-sm-0" type="submit" style="width:200px; font-size:20px">Submit your request</button>
+                        </div>
+                    }
+                    else if (ViewBag.LuStatus == "Already Taken!")
+                    {
+                        <div class="d-flex" style="display:flex; justify-content:center">
+                            <button class="btn btn-info my-2 my-sm-0" disabled type="submit" style="width:200px; font-size:20px">Submit your request</button>
+                        </div>
+                        <p class="text-danger">Somebody has already taken this library unit!</p>
+                    }
+
+                </div>
+        }
+     </form>
+ </div>
+
+
+</div>

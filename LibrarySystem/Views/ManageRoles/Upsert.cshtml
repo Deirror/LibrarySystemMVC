@@ -1,0 +1,117 @@
+﻿@using LibrarySystem.Utility;
+@model LibrarySystem.Models.Domain.User
+@{
+}
+
+<div class=" mt-2 container"
+     style="background-color:white;width:450px; padding-bottom:100px">
+
+
+
+        <form method="post">
+            @{
+                if (ViewBag.Action=="Edit")
+                {
+                <input asp-for="Id" hidden/>
+                <input asp-for="Password" hidden />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                    <h1 class="text-center" style="font-style:italic">Edit Account</h1>
+                    <div class="mb-3">
+                        <label class="form-label">Nickname</label>
+                        <input type="text" class="form-control" asp-for="Nickname" />
+                        <span asp-validation-for="Nickname" class="text-danger"></span>
+                    </div>
+            
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="text" class="form-control" asp-for="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="ms-2">Role</label>
+                    <select asp-for="Role" asp-items="@ViewBag.RolesList" class="form-control">
+                    <option disabled selected>--Select Role--</option>
+                    </select>
+
+                  
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" asp-for="Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    if(NavigationHelper.roleName=="Reader")
+                    {
+                        <div class="mb-3">
+                            <label class="ms-2">Is Approved?</label>
+                        <select asp-for="IsConfirmed" asp-items="@ViewBag.AnswerList" class="form-control">
+                                <option disabled selected>--Select Answer--</option>
+                            </select>
+                        <span asp-validation-for="IsConfirmed" class="text-danger"></span>
+                        </div>
+                    }
+                    <div class="mb-3">
+                    <button type="submit" class="btn btn-primary text-center" style="float:left">Update</button>
+                    </div>
+                }
+                else
+                {
+                    
+                    
+
+                <h1 class="text-center" style="font-style:italic">Create an Account</h1>
+                <div class="mb-3">
+                    <label class="form-label">Nickname</label>
+                        <input type="text" class="form-control" asp-for="Nickname" />
+                        <span asp-validation-for="Nickname" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="text" class="form-control" asp-for="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="text" class="form-control" asp-for="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" asp-for="Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                if (NavigationHelper.roleName == "Reader")
+                {
+                    <div class="mb-3">
+                        <label class="ms-2">Status</label>
+                        <select asp-for="IsConfirmed" asp-items="@ViewBag.AnswerList" class="form-control">
+                            <option disabled selected>--Select Answer--</option>
+                        </select>
+
+                    </div>
+                }
+
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary text-center" style="float:left">Create</button>
+                </div>
+           
+                }
+            <div class="text-center">
+                <a asp-controller="ManageRoles" asp-action="ChangePassword" class="btn btn-link text-info"> Change Password</a>
+                <a asp-controller="ManageRoles" asp-action="Index" class="btn btn-link" style="float:right;"> Back to List</a>
+            </div>
+        
+
+        
+            }
+        </form>
+        @section Scripts{
+            <partial name="_ValidationScriptsPartial"/>
+        }
+    </div>
+

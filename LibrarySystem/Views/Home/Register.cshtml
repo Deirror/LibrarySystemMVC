@@ -1,0 +1,48 @@
+﻿@model LibrarySystem.Models.ViewModels.RegisterRequest
+
+
+
+<div class="p-3 mt-4 container"
+     style="background-color:white;width:450px; margin-top:235px">
+
+        <h1 class="text-center" style="font-style:italic">Register</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Nickname</label>
+                <input type="text" class="form-control" id="nickname" asp-for="Nickname" />
+                <span asp-validation-for="Nickname" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="text" class="form-control" id="password" asp-for="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Cofirm Password</label>
+                <input type="text" class="form-control" id="password" asp-for="ConfirmPassword" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" asp-for="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-dark text-center">Sign up</button>
+            </div>
+        </form>
+    @section Scripts{
+        <partial name="_ValidationScriptsPartial" />
+    }
+</div>
+

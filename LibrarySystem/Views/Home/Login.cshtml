@@ -1,0 +1,36 @@
+﻿@model LoginRequest
+@{
+}
+
+
+<div class="p-3 mt-3 container"
+     style="background-color:white;width:450px; margin-top:150p">
+
+        <h1 class="text-center" style="font-style:italic">Login</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Nickname</label>
+                <input type="text" class="form-control"  asp-for="Nickname" />
+                <span asp-validation-for="Nickname" class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="text" class="form-control" asp-for="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-dark text-center" style="float:left">Login</button>
+                <p style="margin-left:320px">
+                    or <a asp-area="" asp-controller="Home" asp-action="Register">Sign up</a>
+                </p>
+            </div>
+        </form>
+        @section Scripts{
+            <partial name="_ValidationScriptsPartial" />
+        }
+</div>

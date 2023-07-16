@@ -1,0 +1,99 @@
+﻿@model LibrarySystem.Models.Domain.Title
+
+<div class="container mt-2">
+    <div style="background-color:white;width:1000px;margin-left:60px; height:600px">
+
+
+        <h1 class="text-center" style="font-style:italic; margin-right:200px">Delete Title</h1>
+
+
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="Section" hidden/>
+            <input asp-for="Id" hidden />
+            <input asp-for="ImageUrl" hidden />
+    <div class="container" style="margin-right:100px">
+        <div style="float:left; width:40%">
+
+            <div class="mb-3" style=" margin-left:50px">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" disabled asp-for="Name" style="width:300px" />
+
+            </div>
+
+            <div class="mb-3" style="margin-left:50px">
+                <label class="form-label">Description</label>
+                        <input type="text" class="form-control" disabled asp-for="Description" style="width:300px" />
+
+            </div>
+            <div class="mb-3" style="margin-left:50px">
+                <label class="form-label">Author</label>
+                        <input type="text" class="form-control" disabled asp-for="Author" style="width:300px" />
+
+            </div>
+            <div class="mb-3" style=" margin-left:50px">
+                <label class="form-label">Year</label>
+                        <input type="text" class="form-control" disabled asp-for="Year" style="width:300px" />
+
+            </div>
+            <div class="mb-3" style=" margin-left:50px">
+                <label class="form-label">ISBN</label>
+                        <input type="text" class="form-control" disabled asp-for="ISBN" style="width:300px" />
+  
+            </div>
+
+        </div>
+
+        <div style="float:left; width:40%">
+            <div class="mb-3" style="margin-left:50px; width:200px">
+                <label class="ms-2">Type</label>
+                        <input type="text" class="form-control" disabled asp-for="Type" style="width:300px" />
+            </div>
+
+
+
+            <div class="mb-3" style="margin-left:50px">
+                <label class="form-label">Image File</label>
+                        <input type="text" class="form-control" disabled asp-for="ImageUrl" style="width:250px; " />
+
+            </div>
+            <div class="mb-3" style="margin-left:50px">
+                <label class="form-label">Publisher</label>
+                        <input type="text" class="form-control" disabled asp-for="Publisher" style="width:300px" />
+
+            </div>
+            <div class="mb-3" style="margin-left:50px">
+                <label class="form-label">PublishedYear</label>
+                        <input type="text" class="form-control" disabled asp-for="PublishedYear" style="width:300px" />
+
+            </div>
+
+
+            <div class="mb-3" style="margin-left:50px;width:200px">
+                <label class="ms-2">Section Name</label>
+                        <input type="text" class="form-control" disabled asp-for="@Model.Section.Name" style="width:300px" />
+            </div>
+
+
+            <div class="mb-3" style="margin-left:50px; margin-top:20px">
+                <button type="submit" class="btn btn-danger text-center" style="float:left">Delete</button>
+                <p style="margin-left:200px">
+                    or <a  asp-controller="ManageTitles" asp-action="Index">Back to Details</a>
+                </p>
+
+            </div>
+
+
+
+        </div>
+    </div>
+            <div class="col-2" style="float:right;">
+                <img src="@Model.ImageUrl" style="border-radius:5px; border:1px solid #bbb9b9;  width:200px; height:300px;" />
+            </div>
+
+
+</form>
+        @section Scripts{
+            <partial name="_ValidationScriptsPartial" />
+        }
+</div>
+ </div>

@@ -1,0 +1,230 @@
+﻿@using LibrarySystem.Utility
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LibrarySystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LibrarySystem.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+</head>
+<body>
+    <header class="pb-3">
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark" style="font-size:16px">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LibrarySystem</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" >
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="ViewLibraryUnits" asp-action="Index">Library Units</a>
+                        </li>
+                        @{
+                            if (string.IsNullOrEmpty(AccountManagment.Role))
+                            {
+                                <li class="nav-item" style="margin-left:860px">
+                                    <a class="nav-link" asp-controller="Home" asp-action="Register">Register</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link"  asp-controller="Home" asp-action="Login">Login</a>
+                                </li>
+                            }
+                            else
+                            {
+                                if (AccountManagment.IsAdmin())
+                                {
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="  color: white;">
+                                            <i class="bi bi-person-plus"></i> Roles Managment
+                                        </a>
+                                        <ul class="dropdown-menu" >
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   asp-controller="ManageRoles"
+                                                   asp-action="Index" asp-route-role="Reader">
+                                                    Reader
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   asp-controller="ManageRoles"
+                                                   asp-action="Index" asp-route-role="Librarian">
+                                                    Librarian
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   asp-controller="ManageRoles"
+                                                   asp-action="Index" asp-route-role="Admin">
+                                                    Admin
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style=" color: white;">
+                                            <i class="bi bi-book"></i> Details for Library Units
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   asp-area=""
+                                                   asp-controller="ManageSections"
+                                                   asp-action="Index" >
+                                                    Section
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   asp-area=""
+                                                   asp-controller="ManageTitles"
+                                                   asp-action="Index" >
+                                                    Title
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   asp-area=""
+                                                   asp-controller="ManageLibraryUnits"
+                                                   asp-action="Index" >
+                                                    Library unit
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="ManageRequests" asp-action="IndexForLibrarians">Reader's Requests</a>
+                                    </li>
+
+                                    <li class="nav-item" style="margin-left:370px">
+                                        <a class="nav-link " asp-controller="Home" asp-action="Profile">Hi @AccountManagment.Nickname!</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-controller="Home" asp-action="Logout">Logout</a>
+                                    </li>
+                                }
+                                else if (AccountManagment.IsLibrarian())
+                                {
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style=" color: white;">
+                                            <i class="bi bi-book"></i> Details for Library Units
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   asp-area=""
+                                                   asp-controller="ManageSections"
+                                                   asp-action="Index">
+                                                    Section
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   asp-area=""
+                                                   asp-controller="ManageTitles"
+                                                   asp-action="Index">
+                                                    Title
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   asp-area=""
+                                                   asp-controller="ManageLibraryUnits"
+                                                   asp-action="Index">
+                                                    Library unit
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-controller="ManageRequests" asp-action="IndexForLibrarians">Readers' Requests</a>
+                                    </li>
+
+
+                                    <li class="nav-item" style="margin-left:505px">
+                                        <a class="nav-link " asp-controller="Home" asp-action="Profile">Hi @AccountManagment.Nickname!</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-controller="Home" asp-action="Logout">Logout</a>
+                                    </li>
+                                }
+                                else if (AccountManagment.IsReader())
+                                {
+                                    if(AccountManagment.IsConfirmed=="Yes")
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-controller="ManageRequests" asp-action="IndexForReaders">Your Requests</a>
+                                        </li>
+                                        <li class="nav-item" style="margin-left:750px">
+                                            <a class="nav-link " asp-controller="Home" asp-action="Profile">Hi @AccountManagment.Nickname!</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-controller="Home" asp-action="Logout">Logout</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="nav-item" style="margin-left:830px">
+                                            <a class="nav-link " asp-controller="Home" asp-action="Profile">Hi @AccountManagment.Nickname!</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-controller="Home" asp-action="Logout">Logout</a>
+                                        </li>
+                                    }
+
+                                   
+                                }
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <partial name="_Notification" />
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted" data-bs-theme="dark">
+        @{
+            if(AccountManagment.IsReader() || string.IsNullOrEmpty(AccountManagment.Role))
+            {
+        <div class="container">
+            &copy; 2023 - LibrarySystem - If you have questions, don't hesitate and send an email to admin@gmail.com!
+                </div>
+            }
+            else
+            {
+                <div class="container">
+                    &copy; 2023 - LibrarySystem
+                </div>
+            }
+        }
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
