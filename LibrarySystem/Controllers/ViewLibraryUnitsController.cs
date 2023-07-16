@@ -58,6 +58,14 @@ namespace LibrarySystem.Controllers
             ViewBag.SectionList = this.SectionList;
             ViewBag.TypeList = this.typeList;
             var titlesList = _context.Titles.ToList();
+
+            foreach(var el in _context.Titles.ToList())
+            {
+                if(!_context.LibraryUnits.Where(x=>x.Title==el).Any())
+                {
+                    titlesList.Remove(el);
+                }
+            }
             List<Title> titles = new List<Title>();
             
             if(NavigationHelper.navoptionList.Count>0)
@@ -71,6 +79,13 @@ namespace LibrarySystem.Controllers
                         //section
 
                         titles = _context.Titles.Include(x => x.Section).Where(x => x.Section.Name == NavigationHelper.navoptionList[0]).ToList();
+                        foreach (var el in _context.Titles.ToList())
+                        {
+                            if (!_context.LibraryUnits.Where(x => x.Title == el).Any())
+                            {
+                                titles.Remove(el);
+                            }
+                        }
                         if (titles == null || titles.Count == 0)
                         {
                             TempData["error"] = "Not Found!";
@@ -78,12 +93,21 @@ namespace LibrarySystem.Controllers
                             return View(titlesList);
                         }
                         NavigationHelper.navoptionList.Clear();
+                       
                         return View(titles);
                     }
                     else
                     {
                         //type
+
                         titles = _context.Titles.Where(x => x.Type == NavigationHelper.navoptionList[0]).ToList();
+                        foreach (var el in _context.Titles.ToList())
+                        {
+                            if (!_context.LibraryUnits.Where(x => x.Title == el).Any())
+                            {
+                                titles.Remove(el);
+                            }
+                        }
                         if (titles == null || titles.Count==0)
                         {
                             TempData["error"] = "Not Found!";
@@ -91,6 +115,7 @@ namespace LibrarySystem.Controllers
                             return View(titlesList);
                         }
                         NavigationHelper.navoptionList.Clear();
+                       
                         return View(titles);
 
                     }
@@ -99,13 +124,24 @@ namespace LibrarySystem.Controllers
                 {
                      titles= _context.Titles.Include(x=>x.Section).Where(x => x.Section.Name == NavigationHelper.navoptionList[0]).Where(x => x.Type == NavigationHelper.navoptionList[1]).ToList();
 
-                    if(titles==null || titles.Count == 0)
+
+                    foreach (var el in _context.Titles.ToList())
+                    {
+                        if (!_context.LibraryUnits.Where(x => x.Title == el).Any())
+                        {
+                            titles.Remove(el);
+                        }
+                    }
+
+
+                    if (titles==null || titles.Count == 0)
                     {
                         TempData["error"] = "Not Found!";
                         NavigationHelper.navoptionList.Clear();
                         return View(titlesList);
                     }
                     NavigationHelper.navoptionList.Clear();
+                   
                     return View(titles);
                 }
             }          
@@ -119,18 +155,18 @@ namespace LibrarySystem.Controllers
 
                 if (NavigationHelper.searchoption == "bytitle")
                 {
-                    foreach (var el in _context.Titles)
+                    foreach (var el in titlesList)
                     {
                         string lowername = el.Name.ToLower();
                         if (lowername.Contains(NavigationHelper.searchString.ToLower()))
-                        {
+                        {                       
                             titles.Add(el);
                         }
                     }
                 }
                 else if(NavigationHelper.searchoption =="byauthor")
                 {
-                    foreach (var el in _context.Titles)
+                    foreach (var el in titlesList)
                     {
                         string lowername = el.Author.ToLower();
                         if (lowername.Contains(NavigationHelper.searchString.ToLower()))

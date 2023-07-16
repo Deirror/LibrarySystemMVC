@@ -1,2 +1,0 @@
-# DeirrorzProject
-First Project!!!
