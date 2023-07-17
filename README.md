@@ -21,4 +21,6 @@
  -В Program.cs съм добавил var scope = app.Services.CreateScope(), чрез което ще се създаде база данни, ако няма такава.
   -В метода OnModelCreating съм добавил три акаунта, шест раздела, девет заглавия и девет библиотечни единици.
   -Снимките се пазят в wwwroth папката.
+  -Connection string е сложен в appsettings.json
+  -Като Nuget Packet за криптиране на паролите съм използвал System.Web.Helpers.Crypto
     
