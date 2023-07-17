@@ -16,6 +16,6 @@ namespace LibrarySystem.Models.Domain
         [StringLength(maximumLength: 300, ErrorMessage = "The description must be at least 10 characters long.", MinimumLength = 10)]
         public required string Description { get; set; }
         [ValidateNever]
-        public required ICollection<Title> Titles { get; set; }
+        public ICollection<Title> Titles { get; set; }
     }
 }

@@ -33,6 +33,7 @@ namespace LibrarySystem.Models.Domain
         [DisplayName("Published Year")]
         public int? PublishedYear { get; set; }
 
+        public Guid SectionId { get; set; }
         public Section? Section { get; set; }
     }
 }

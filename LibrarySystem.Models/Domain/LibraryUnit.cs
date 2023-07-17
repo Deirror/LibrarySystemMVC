@@ -11,8 +11,10 @@ namespace LibrarySystem.Models.Domain
     public class LibraryUnit
     {
         public Guid Id { get; set; }
+
+        public Guid TitleId { get; set; }
         [ValidateNever]
-        public required Title Title { get; set; }
+        public Title? Title { get; set; }
 
         public required string CurrentCondition { get; set; }
 
