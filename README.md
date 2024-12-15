@@ -2,26 +2,10 @@
 
 ![lms](https://github.com/user-attachments/assets/6507c6c0-9dc3-470f-b81e-0b3ef6607f3d)
 
-- Описание:
- - Това е проект за онлайн библиотечна система. Той съдържа акаунти(три основни роли + нерегистриран потребител),
- - разглеждане на налични библиотечни единици, създаване, променяне и изтриване на библиотечни единици.
- - Както е описано в заданието, всички роли се характеризират с дадени свойства и имат различни права.
- - Читателите могат да запазват библиотечните единици, който желаят, и библиотекар може да приеме тази заявка или да я отхвърли. 
+Description of the project:
+-
 
- - Автор:
-  -Имена: Александър Ангелов Ангелов
-  -Имейл за контакт: alexmailbg@gmail.com
-
- - Уеб сайта има начална страница, в която има възможността да се влезне с акаунт.
- - Има предварително създаден администраторски акаунт с Nickname-Admin и Password-admin123.
- - Admin има достъп до всички страници и може да разглежда библиотечните единици, създава, променя и трие.
- - Също така може да приема нови заявки за регистрация на нов потребител.
- - Може да променя пароли(всички пароли се пазят в криптиран вид в базата данни), може да се създава всички роли и да променя данните им.
-
-- Малко инструкции:
- -В Program.cs съм добавил var scope = app.Services.CreateScope(), чрез което ще се създаде база данни, ако няма такава.
-  -В метода OnModelCreating съм добавил три акаунта, шест раздела, девет заглавия и девет библиотечни единици.
-  -Снимките се пазят в wwwroth папката.
-  -Connection string е сложен в appsettings.json
-  -Като Nuget Packet за криптиране на паролите съм използвал System.Web.Helpers.Crypto
-    
+- This is an online library system project. It contains accounts (three main roles + unregistered user), viewing available library items, creating, modifying and deleting library items.
+- All roles are characterized by given properties and have different rights.
+- Readers can reserve the library items they want, and a librarian can accept or reject that request.
+- The website has a home page where you can log in with an account.
