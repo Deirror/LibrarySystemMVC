@@ -28,5 +28,7 @@ Borrowing a book:
 
 https://github.com/user-attachments/assets/fe692ad2-28a4-4476-9b0a-e2733ba9062b
 
+-  There a lot more cool stuff to cover, but if you are interested, don't hesitate and shoot a direct message via Instragram or write and email.
+-  Contact: *alexmailbg@gmail.com*, or *_alexangelow_* for Instagram
 
 
