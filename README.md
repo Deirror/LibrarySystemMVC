@@ -9,3 +9,11 @@ Description of the project:
 - All roles are characterized by given properties and have different rights.
 - Readers can reserve the library items they want, and a librarian can accept or reject that request.
 - The website has a home page where you can log in with an account.
+
+How to run the website?
+-
+
+-  Clone this repo.
+-  You should have SSMS installed.
+-  An admin account is initialized with the following nickname and password: *Admin* and *admin123*
+-  A few images and info about books are also initialized when running the website on localhost.
