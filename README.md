@@ -23,4 +23,10 @@ A small capture of admins actions in the website:
 
 https://github.com/user-attachments/assets/19ff8a06-ea78-4965-81f9-442d00a93253
 
+Borrowing a book:
+-
+
+https://github.com/user-attachments/assets/fe692ad2-28a4-4476-9b0a-e2733ba9062b
+
+
 
