@@ -1,4 +1,4 @@
-# LibrarySystemMVCProject
+# LibrarySystemMVC
 - Заглавие: LibrarySystem
 
 - Описание:
