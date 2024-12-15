@@ -1,4 +1,6 @@
-# LibrarySystemMVC
+# LibrarySystem
+
+![lms](https://github.com/user-attachments/assets/6507c6c0-9dc3-470f-b81e-0b3ef6607f3d)
 
 - Описание:
  - Това е проект за онлайн библиотечна система. Той съдържа акаунти(три основни роли + нерегистриран потребител),
