@@ -17,3 +17,10 @@ How to run the website?
 -  You should have SSMS installed.
 -  An admin account is initialized with the following nickname and password: *Admin* and *admin123*
 -  A few images and info about books are also initialized when running the website on localhost.
+
+A small capture of admins actions in the website:
+-
+
+https://github.com/user-attachments/assets/19ff8a06-ea78-4965-81f9-442d00a93253
+
+
