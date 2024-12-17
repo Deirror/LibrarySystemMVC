@@ -9,6 +9,7 @@ Description of the project:
 - All roles are characterized by given properties and have different rights.
 - Readers can reserve the library items they want, and a librarian can accept or reject that request.
 - The website has a home page where you can log in with an account.
+- Description in Bulgarian - [here](https://github.com/Deirror/LibrarySystem/tree/main/Project%20Description)
 
 How to run the website?
 -
